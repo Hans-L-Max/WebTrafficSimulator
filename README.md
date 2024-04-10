@@ -48,4 +48,11 @@ The simulator is designed for extensibility. Additional request types and config
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any bugs or feature requests.
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Copyright
+© 2024 Max Brückner. All rights reserved.
+
 Happy testing!
