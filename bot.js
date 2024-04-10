@@ -1,3 +1,10 @@
+/**
+ * Filename: bot.js
+ * Description: Simulates web traffic by making automated HTTP requests based on configurable parameters.
+ * Copyright © 2024 Max Brückner
+ * License: MIT
+ */
+
 /* Required dependencies for HTTP requests and cookie support */
 const axios = require('axios').default;
 const { wrapper } = require('axios-cookiejar-support');
