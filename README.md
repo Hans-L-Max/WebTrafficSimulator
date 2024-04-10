@@ -1,73 +1,51 @@
-# WebTrafficSimulator
+# Web Traffic Simulator
 
-Simulate web traffic with customizable, realistic patterns using WebTrafficSimulator, a Node.js tool designed for developers and QA engineers to test the performance and load handling of web applications.
+Welcome to `WebTrafficSimulator`, a streamlined tool designed for developers and QA engineers focused on evaluating web application performance and load capacity. It simplifies the simulation of web traffic by allowing both GET and POST requests, equipped with cookie support for maintaining session continuity. Whether you're testing a new feature or assessing your application's resilience under heavy load, `WebTrafficSimulator` offers the essential functionality to get the job done.
 
-## Features
+## Key Features
 
-- **Customizable Traffic Patterns**: Easily adjust the volume, frequency, and type of traffic to simulate real-world web activity.
-- **Dynamic User-Agent Simulation**: Mimic requests from various browsers to test cross-browser compatibility and performance.
-- **Cookie Support**: Maintain session continuity across requests, providing a more accurate simulation of user behavior.
-- **Parallel Request Handling**: Test your application's concurrency capabilities by simulating multiple users accessing it simultaneously.
-- **Configurable via JSON**: Use the `config.json` file to tweak your testing parameters without touching the code.
+- **Flexible Request Handling**: Easily configure GET and POST requests to mimic real user interactions.
+- **Cookie Support**: Session continuity is key for realistic traffic simulation, and cookie support is fully integrated.
+- **Error Logging**: Encounter an issue? Detailed error logs provide the insights needed for quick resolution.
+- **Customizable Testing**: Adjust your testing parameters directly in `config.json` for tailored simulation scenarios.
 
 ## Getting Started
 
-### Prerequisites
+1. **Preparation**: Ensure Node.js is installed on your system.
+2. **Download**: Clone this repository and navigate to the project folder.
+3. **Dependency Installation**: Run `npm install` to set up.
+4. **Configure**: Edit `config.json` to define your testing parameters.
+5. **Execute**: Start the simulation with `node bot.js`.
 
-- Node.js
-- npm
+## Dependencies
 
-### Installation
+- `axios` for making HTTP requests.
+- `axios-cookiejar-support` and `tough-cookie` for cookie support.
+- `fs` and `path` for file system operations.
+- `util` for detailed error logging.
 
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/your-username/WebTrafficSimulator.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd WebTrafficSimulator
-   ```
-3. Install the required dependencies:
-   ```bash
-   npm install
-   ```
+## Configuration (`config.json`)
 
-### Configuration
+Define your testing parameters:
 
-Edit the `config.json` file to set your target URLs, desired user-agent strings, number of requests, and other parameters. Here's an example configuration:
+- **`userAgents`**: List of user-agent strings to simulate different browsers.
+- **`requests`**: Array of request configurations, including method (`GET`, `POST`), URL, and optional data payload for POST requests.
+- **`numberOfSessions`**: Total number of simulated user sessions.
+- **`numberOfRequests`**: Total number of requests to send.
+- **`delay`**: Delay (in milliseconds) between requests.
+- **`parallelRequests`**: Maximum number of requests to send in parallel.
+- **`additionalRequestsProbability`**: Probability of sending more than one parallel request.
 
-### Configuration Details
+## Logging
 
-Here's a closer look at the configuration options for the WebTrafficSimulator, with comments to guide your customization:
+Errors encountered during the simulation are logged in `error.log`, providing detailed information for troubleshooting. The log includes timestamps, error messages, and stack traces.
 
-- **`userAgents`**: This array contains user-agent strings that mimic different browsers. The simulator selects from these strings at random for each request, simulating traffic from various browsers and devices, such as Chrome, Safari, and Firefox. This diversity helps test your application's compatibility and performance across a broad user base.
+## Extending
 
-- **`urls`**: A list of target URLs to which the simulator will send HTTP requests. These URLs should point to the specific endpoints or pages within your web application you wish to test. By randomly selecting from this list for each request, the simulator can mimic user interactions with different parts of your application, providing a comprehensive load and performance test.
-
-- **`numberOfSessions`**: Specifies the total number of sessions the simulator will create. Each session is independent, with its own set of cookies, mirroring the behavior of multiple unique users accessing your application. This setting is crucial for testing how well your application manages user sessions under load.
-
-- **`numberOfRequests`**: The total number of HTTP requests that the simulator will attempt to send. This figure gives you control over the extent of the load test, allowing you to simulate both light and heavy traffic scenarios to see how your application responds.
-
-- **`delay`**: Defines the delay (in milliseconds) between each request. This delay is vital for simulating more realistic user behavior, as it prevents all requests from being sent simultaneously and can help avoid inadvertently overwhelming your server.
-
-- **`parallelRequests`**: The maximum number of requests that can be sent in parallel during a single simulation cycle. A random number between 1 and this value is calculated for each cycle, determining how many requests will be sent concurrently. This setting helps simulate the unpredictable nature of web traffic, where the number of users accessing the application simultaneously can vary widely.
-
-- **`additionalRequestsProbability`**: A probability factor that influences whether the simulator will send multiple parallel requests. This value, ranging from 0 to 1, dictates the likelihood of sending more than one request at a time, further adding to the randomness and realism of the simulation.
-
-By adjusting these settings in the `config.json` file, you can tailor the simulation to meet your specific testing needs, whether you're looking to evaluate the performance under typical traffic conditions, identify bottlenecks, or understand how your application behaves under extreme load.
-
-### Running the Simulator
-
-Execute the script with Node.js:
-
-```bash
-node bot.js
-```
+The simulator is designed for extensibility. Additional request types and configurations can be easily added to `config.json`. The core simulation script (`bot.js`) can be modified to include new features, such as different types of authentication, custom headers, and more complex session management scenarios.
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a pull request or open an issue for any bugs or feature requests.
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Happy testing!
