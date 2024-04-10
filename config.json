@@ -17,8 +17,8 @@
 			"method": "POST",
 			"url": "http://example.com/api/v1/resource/create",
 			"data": {
-				"name": "SampleName",
-				"description": "SampleDescription"
+				"key": "value",
+				"key2": "value2",
 			}
 		}
 	],
